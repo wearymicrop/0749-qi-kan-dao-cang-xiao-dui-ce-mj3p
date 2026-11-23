@@ -10,6 +10,7 @@ templates = Jinja2Templates(directory=ROOT / "app/templates")
 INDEX = {
     "balance": "缺刊勾稽", "orders": "订购规则", "receipts": "来刊采信",
     "numbering": "卷期解析", "combined": "合期展期", "titles": "刊名沿革", "runs": "证据寄送",
+    "handover": "停复刊交班",
 }
 
 

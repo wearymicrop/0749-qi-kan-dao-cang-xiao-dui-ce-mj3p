@@ -1,4 +1,5 @@
 import { element, folio, paintEvidence, paintExtras, stageTable, states } from './evidence.js';
+import { bootHandover } from './handover.js';
 
 const $ = id => document.getElementById(id);
 const sample = $('sample');
@@ -177,4 +178,5 @@ $('preview').addEventListener('click', preview);
 $('save').addEventListener('click', () => save(false));
 $('rerun').addEventListener('click', () => save(true));
 $('print').addEventListener('click', () => window.print());
+bootHandover();
 preview();

@@ -6,6 +6,7 @@
   <title>期刊到藏校对册</title>
   <link rel="stylesheet" href="/static/paper.css">
   <link rel="stylesheet" href="/static/catalog.css">
+  <link rel="stylesheet" href="/static/handover.css">
   <link rel="stylesheet" href="/static/print.css" media="print">
   <script type="module" src="/static/desk.js"></script>
 </head>
@@ -59,6 +60,48 @@
       <section class="panel stage" id="stage" hidden aria-labelledby="stage-title">
         <div class="panel-heading"><h2 id="stage-title">阶段记录</h2></div>
         <div class="stage-body" id="stage-body"></div>
+      </section>
+      <section class="panel handover" id="handover" aria-labelledby="handover-title">
+        <div class="panel-heading">
+          <h2 id="handover-title">停复刊交班</h2>
+          <div class="filters">
+            <label for="handover-filter">期位状态</label>
+            <select id="handover-filter">
+              <option value="all">全部</option>
+              <option value="suspended">停刊</option>
+              <option value="resumed">已恢复</option>
+              <option value="pending">仍待确认</option>
+            </select>
+          </div>
+        </div>
+        <div class="kpis handover-kpis" id="handover-kpis" aria-live="polite"></div>
+        <div class="handover-scroll">
+          <table aria-label="停复刊期位交班清单">
+            <thead><tr><th scope="col">订阅链</th><th scope="col">卷期</th><th scope="col">交班状态</th><th scope="col">最新依据</th><th scope="col">依据链（来函编号与效力）</th></tr></thead>
+            <tbody id="handover-register"></tbody>
+          </table>
+        </div>
+        <div class="versions-line" id="handover-versions"></div>
+        <div class="handover-batch">
+          <label for="handover-input">分批补送来函（首批须随附 <code>rules</code>；同一份来函重跑只记重放，不重复增减期位）</label>
+          <textarea id="handover-input" rows="8" spellcheck="false" placeholder='{"rules":[...],"notices":[{...}]}'></textarea>
+          <div class="handover-tools">
+            <button type="button" id="handover-sample-first">填入首批样例</button>
+            <button type="button" id="handover-sample-followup">填入补件样例</button>
+            <button class="ink" type="button" id="handover-deliver">送达本批来函</button>
+            <span role="status" id="handover-feedback"></span>
+          </div>
+        </div>
+        <div class="ledger-tabs">
+          <label>来函台账</label>
+          <select id="handover-ledger-tab">
+            <option value="inbox">全部原件</option>
+            <option value="accepted">已采信</option>
+            <option value="quarantine">隔离原件</option>
+            <option value="replays">重放记录</option>
+          </select>
+        </div>
+        <div class="ledger-body" id="handover-ledger-body"></div>
       </section>
       <section class="panel archive" id="runs" aria-labelledby="archive-title">
         <div class="panel-heading"><h2 id="archive-title">证据寄送</h2><small id="run-metadata"></small></div>
